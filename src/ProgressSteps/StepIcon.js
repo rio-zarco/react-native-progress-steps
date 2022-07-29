@@ -149,7 +149,7 @@ class StepIcon extends Component {
     }
 
     return (
-      <View style={{ flexDirection: 'column', alignItems: 'center' }}>
+      <TouchableOpacity style={{ flexDirection: 'column', alignItems: 'center' }} onPress={this.props.onPress} disabled={!this.props.onPress}>
         <View style={styles.circleStyle}>
           <Text style={styles.circleText}>
             {this.props.isCompletedStep ? (
@@ -162,7 +162,7 @@ class StepIcon extends Component {
         <Text style={styles.labelText}>{this.props.label}</Text>
         {!this.props.isFirstStep && <View style={styles.leftBar} />}
         {!this.props.isLastStep && <View style={styles.rightBar} />}
-      </View>
+      </TouchableOpacity>
     );
   }
 }
@@ -196,6 +196,8 @@ StepIcon.propTypes = {
   disabledStepNumColor: PropTypes.string,
 
   completedCheckColor: PropTypes.string,
+
+  onPress: PropTypes.func
 };
 
 StepIcon.defaultProps = {
